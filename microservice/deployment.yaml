@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    name: microservice
+  name: microservice
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: microservice
+  template:
+    metadata:
+      labels:
+        name: microservice
+    spec:
+      containers:
+      - image: quay.io/vaibhavjain/microservice:2.0
+        name: microservice
+        ports:
+        - containerPort: 8080
+          name: http-server
